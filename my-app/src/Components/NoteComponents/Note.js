@@ -7,7 +7,6 @@ function Note() {
         <div>
             <textarea value={note} onChange={(event) => setNote(event.target.value)} />
             <p>{note}</p>
-            <button onClick={() => setNote('')}>delete</button>
         </div>
     );
 }
