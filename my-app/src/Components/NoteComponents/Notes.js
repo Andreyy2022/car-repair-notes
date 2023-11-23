@@ -5,12 +5,13 @@ import { nanoid } from "nanoid";
 function Notes() {
     let [note, setNote] = useState('');
     let [notes, setNotes] = useState([]);
-/*
-    let noteObj = {
-        id: nanoid(),
-        text: note
-    }
-*/
+
+    let listLink = notes.map(
+        (note) => (
+           <li key={note.id}><a href="#">{note.text}</a></li>
+        )
+    );
+
     return (
         <div>
 
@@ -18,7 +19,10 @@ function Notes() {
             <p>{note}</p>
 
             <button onClick={() => setNotes([...notes, {id: nanoid(), text: note}])}>Сохранить запись {console.log(notes)}</button>
-            <p></p>
+
+            <ol>
+                {listLink}
+            </ol>
         </div>
     );
 }
