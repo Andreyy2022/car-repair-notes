@@ -6,22 +6,31 @@ function Notes() {
     let [note, setNote] = useState('');
     let [notes, setNotes] = useState([]);
 
-    let listLink = notes.map(
+    function showLink(str) {
+        let res = '';
+        for (let i = 0; (str < 70) ? i <= str : i < 70; i++) {
+            res += str[i];
+        }
+
+        return res;
+    }
+
+    let listLinks = notes.map(
         (note) => (
-           <li key={note.id}><a href="#">{note.text}</a></li>
+           <li key={note.id}><a href="#">{showLink(note.text)}</a></li>
         )
     );
 
     return (
         <div>
 
-            <textarea value={note} onChange={(event) => setNote(event.target.value)} />
+            <textarea cols={60} rows={7} value={note} onChange={(event) => setNote(event.target.value)} />
             <p>{note}</p>
 
             <button onClick={() => setNotes([...notes, {id: nanoid(), text: note}])}>Сохранить запись {console.log(notes)}</button>
 
             <ol>
-                {listLink}
+                {listLinks}
             </ol>
         </div>
     );
