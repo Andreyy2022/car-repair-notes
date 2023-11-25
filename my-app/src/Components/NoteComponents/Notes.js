@@ -21,16 +21,15 @@ function Notes() {
     }
  
     let listLinks = notes.map(
-        (note) => (
-           <li key={note.id}><a href="#">{showLink(note.text)}</a></li>
+        (noteObj) => (
+           <li key={noteObj.id} onClick={() => alert(noteObj.text)}><a href="#">{showLink(noteObj.text) + '...'}</a></li>
         )
     );
 
     return (
         <div>
-
             <textarea cols={60} rows={7} value={note} onChange={(event) => setNote(event.target.value)} />
-            <p>{note}</p>
+            <p id="show"></p>
 
             <button onClick={saveClearNote}>Сохранить запись {console.log(notes)}</button>
 
