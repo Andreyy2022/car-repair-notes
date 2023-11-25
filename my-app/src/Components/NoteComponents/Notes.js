@@ -14,7 +14,12 @@ function Notes() {
 
         return res;
     }
-
+    
+    function saveClearNote() {
+        setNotes([...notes, {id: nanoid(), text: note}]);
+        setNote('');
+    }
+ 
     let listLinks = notes.map(
         (note) => (
            <li key={note.id}><a href="#">{showLink(note.text)}</a></li>
@@ -27,7 +32,7 @@ function Notes() {
             <textarea cols={60} rows={7} value={note} onChange={(event) => setNote(event.target.value)} />
             <p>{note}</p>
 
-            <button onClick={() => setNotes([...notes, {id: nanoid(), text: note}])}>Сохранить запись {console.log(notes)}</button>
+            <button onClick={saveClearNote}>Сохранить запись {console.log(notes)}</button>
 
             <ol>
                 {listLinks}
