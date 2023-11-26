@@ -5,6 +5,7 @@ import { nanoid } from "nanoid";
 function Notes() {
     let [note, setNote] = useState('');
     let [notes, setNotes] = useState([]);
+    let [isIt, setIsIt] = useState(false);
 
     function showLink(str) {
         let res = '';
@@ -16,13 +17,13 @@ function Notes() {
     }
     
     function saveClearNote() {
-        setNotes([...notes, {id: nanoid(), text: note}]);
+        setNotes([...notes, {id: nanoid(), text: note, showStr: isIt}]);
         setNote('');
     }
  
     let listLinks = notes.map(
         (noteObj) => (
-           <li key={noteObj.id} onClick={() => alert(noteObj.text)}><a href="#">{showLink(noteObj.text) + '...'}</a></li>
+           <li key={noteObj.id} onClick={() => setIsIt(!isIt)}>{isIt ? noteObj.text : (showLink(noteObj.text) + '...')}</li>
         )
     );
 
