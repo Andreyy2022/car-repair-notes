@@ -20,10 +20,16 @@ function Notes() {
         setNotes([...notes, {id: nanoid(), text: note, showStr: isIt}]);
         setNote('');
     }
+
+    function btn(id) {
+        return <button onClick={() => setNotes( notes.filter(noteObj => noteObj.id != id) )}>удалить запись ?</button>
+    }
  
     let listLinks = notes.map(
         (noteObj) => (
-           <li key={noteObj.id} onClick={() => setIsIt(!isIt)}>{isIt ? noteObj.text : (showLink(noteObj.text) + '...')}</li>
+           <li key={noteObj.id} onClick={() => setIsIt(!isIt)}>
+                {isIt ? (noteObj.text) : (showLink(noteObj.text) + '...')}<br/>{isIt ? (btn(noteObj.id)) : ''}
+            </li>
         )
     );
 
