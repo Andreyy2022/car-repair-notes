@@ -5,7 +5,7 @@ import { nanoid } from "nanoid";
 function Notes() {
     let [note, setNote] = useState('');
     let [notes, setNotes] = useState([]);
-    let [isIt, setIsIt] = useState(false);
+//    let [isIt, setIsIt] = useState(false);
 
     function showLink(str) {
         let res = '';
@@ -17,18 +17,28 @@ function Notes() {
     }
     
     function saveClearNote() {
-        setNotes([...notes, {id: nanoid(), text: note, showStr: isIt}]);
+        setNotes([...notes, {id: nanoid(), text: note, showStr: false}]);
         setNote('');
     }
 
+    function showHideStr(id) {
+        setNotes(notes.map(noteObj => {
+            if (noteObj.id === id) {
+                noteObj.showStr = !noteObj.showStr;
+            }
+
+            return noteObj;
+        }));
+    }
+
     function btn(id) {
-        return <button onClick={() => setNotes( notes.filter(noteObj => noteObj.id != id) )}>удалить запись ?</button>
+        return <button onClick={() => setNotes( notes.filter(noteObj => noteObj.id !== id) )}>удалить запись ?</button>
     }
  
     let listLinks = notes.map(
-        (noteObj) => (
-           <li key={noteObj.id} onClick={() => setIsIt(!isIt)}>
-                {isIt ? (noteObj.text) : (showLink(noteObj.text) + '...')}<br/>{isIt ? (btn(noteObj.id)) : ''}
+        noteObj => (
+            <li key={noteObj.id} onClick={() => showHideStr(noteObj.id)}>
+                {noteObj.showStr ? noteObj.text : (showLink(noteObj.text) + '...')}<br/>{noteObj.showStr ? btn(noteObj.id) : ''}
             </li>
         )
     );
@@ -36,7 +46,6 @@ function Notes() {
     return (
         <div>
             <textarea cols={60} rows={7} value={note} onChange={(event) => setNote(event.target.value)} />
-            <p id="show"></p>
 
             <button onClick={saveClearNote}>Сохранить запись {console.log(notes)}</button>
 
