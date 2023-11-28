@@ -1,11 +1,9 @@
 import { useState } from "react";
-//import Note from "./Note";
 import { nanoid } from "nanoid";
 
 function Notes() {
     let [note, setNote] = useState('');
     let [notes, setNotes] = useState([]);
-//    let [isIt, setIsIt] = useState(false);
 
     function showLink(str) {
         let res = '';
@@ -46,9 +44,8 @@ function Notes() {
     return (
         <div>
             <textarea cols={60} rows={7} value={note} onChange={(event) => setNote(event.target.value)} />
-
-            <button onClick={saveClearNote}>Сохранить запись {console.log(notes)}</button>
-
+            <button onClick={saveClearNote}>Сохранить запись</button>
+            {console.log(notes)}
             <ol>
                 {listLinks}
             </ol>
