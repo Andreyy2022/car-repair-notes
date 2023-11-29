@@ -30,14 +30,17 @@ function Notes() {
     }
 
     function btn(id) {
-        return <button onClick={() => setNotes( notes.filter(noteObj => noteObj.id !== id) )}>удалить запись ?</button>
+        setNotes( notes.filter(noteObj => noteObj.id !== id) );
     }
- 
+
     let listLinks = notes.map(
         noteObj => (
-            <li key={noteObj.id} onClick={() => showHideStr(noteObj.id)}>
-                {noteObj.showStr ? noteObj.text : (showLink(noteObj.text) + '...')}<br/>{noteObj.showStr ? btn(noteObj.id) : ''}
-            </li>
+            <p key={noteObj.id} >
+            <span onClick={() => showHideStr(noteObj.id)}>
+                {noteObj.showStr ? noteObj.text : (showLink(noteObj.text) + '...')}
+            </span>
+            <button onClick={() => btn(noteObj.id) }>{noteObj.showStr ? 'удалить запись ?' : ''}</button>
+            </p>
         )
     );
 
@@ -46,9 +49,9 @@ function Notes() {
             <textarea cols={60} rows={7} value={note} onChange={(event) => setNote(event.target.value)} />
             <button onClick={saveClearNote}>Сохранить запись</button>
             {console.log(notes)}
-            <ol>
+            <div>
                 {listLinks}
-            </ol>
+            </div>
         </div>
     );
 }
