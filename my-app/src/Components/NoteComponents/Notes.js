@@ -36,10 +36,14 @@ function Notes() {
     let listLinks = notes.map(
         noteObj => (
             <p key={noteObj.id} >
-            <span onClick={() => showHideStr(noteObj.id)}>
-                {noteObj.showStr ? noteObj.text : (showLink(noteObj.text) + '...')}
-            </span>
-            <button onClick={() => btn(noteObj.id) }>{noteObj.showStr ? 'удалить запись ?' : ''}</button>
+                <span onClick={() => showHideStr(noteObj.id)}>
+                    {noteObj.showStr ? noteObj.text : (showLink(noteObj.text) + '...')}
+                </span>
+                <span>{new Date().toLocaleDateString()}</span>
+                <br/>
+                <button onClick={() => btn(noteObj.id) }>{noteObj.showStr ? 'удалить запись ?' : ''}</button>
+                <br/>
+                <br/>
             </p>
         )
     );
