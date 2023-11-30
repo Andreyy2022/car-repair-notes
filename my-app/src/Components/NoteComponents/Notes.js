@@ -41,7 +41,7 @@ function Notes() {
                 </span>
                 <span>{new Date().toLocaleDateString()}</span>
                 <br/>
-                <button onClick={() => btn(noteObj.id) }>{noteObj.showStr ? 'удалить запись ?' : ''}</button>
+                { noteObj.showStr ? <button onClick={() => btn(noteObj.id) }>{noteObj.showStr ? 'удалить запись ?' : ''}</button> : '' }
                 <br/>
                 <br/>
             </p>
