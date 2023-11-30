@@ -7,7 +7,8 @@ function Notes() {
 
     function showLink(str) {
         let res = '';
-        for (let i = 0; (str < 70) ? i <= str : i < 70; i++) {
+        for (let i = 0; (str.length < 70) ? (i = str.length - 1) : i = 69; i++) {
+            console.log(str[i]);
             res += str[i];
         }
 
