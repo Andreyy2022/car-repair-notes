@@ -1,10 +1,22 @@
 import { useState } from "react";
 import { nanoid } from "nanoid";
+import { useEffect } from "react";
 
 function Notes() {
     let [note, setNote] = useState('');
     let [notes, setNotes] = useState([]);
+/*
+    useEffect(() => {
+        localStorage.setItem('notes', JSON.stringify(notes));
+    }, [notes]);
 
+    useEffect(() => {
+        const data = JSON.parse(localStorage.getItem('notes'));
+        if (data) {
+            setNotes(data);
+        }
+    }, []);
+*/
     function showLink(str) {
         let res = '';
         for (let i = 0; str.length < 70 ? i < str.length : i < 70; i++) {
