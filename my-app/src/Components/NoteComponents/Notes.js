@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { nanoid } from "nanoid";
-import { useEffect } from "react";
+//import { useEffect } from "react";
 
 function Notes() {
     let [note, setNote] = useState('');
-    let [notes, setNotes] = useState([]);
+    let [notes, setNotes] = useState(localStorage.getItem('notes') ? JSON.parse(localStorage.getItem('notes')) : []);
 /*
     useEffect(() => {
         localStorage.setItem('notes', JSON.stringify(notes));
@@ -17,7 +17,7 @@ function Notes() {
         }
     }, []);
 */
-    function showLink(str) {
+    function showNote(str) {
         let res = '';
         for (let i = 0; str.length < 70 ? i < str.length : i < 70; i++) {
             res += str[i];
@@ -31,7 +31,9 @@ function Notes() {
     }
     
     function saveClearNote() {
-        setNotes([...notes, {id: nanoid(), date: new Date().toLocaleDateString(), text: note, showStr: false}]);
+        localStorage.set('notes', JSON.stringify([...notes, {id: nanoid(), date: new Date().toLocaleDateString(), text: note, showStr: false}]));
+        setNotes( JSON.parse(localStorage.getItem('notes')) );
+        
         setNote('');
     }
 
@@ -45,18 +47,18 @@ function Notes() {
         }));
     }
 
-    function btn(id) {
+    function btnDel(id) {
         setNotes( notes.filter(noteObj => noteObj.id !== id) );
     }
 
-    let listLinks = notes.map(
+    let listNotes = notes.map(
         noteObj => (
             <p key={noteObj.id} >
                 <span onClick={() => showHideStr(noteObj.id)}>
-                    {noteObj.date} - {noteObj.showStr ? noteObj.text : showLink(noteObj.text)}
+                    {noteObj.date} - {noteObj.showStr ? noteObj.text : showNote(noteObj.text)}
                 </span>
                 <br/>
-                { noteObj.showStr ? <button onClick={() => btn(noteObj.id) }>{noteObj.showStr ? 'удалить запись ?' : ''}</button> : '' }
+                { noteObj.showStr ? <button onClick={() => btnDel(noteObj.id) }>{noteObj.showStr ? 'удалить запись ?' : ''}</button> : '' }
                 <br/>
             </p>
         )
@@ -67,7 +69,7 @@ function Notes() {
             <textarea cols={60} rows={7} value={note} onChange={(event) => setNote(event.target.value)} />
             <button onClick={saveClearNote}>Сохранить запись</button>
             <div>
-                {listLinks}
+                {listNotes}
             </div>
         </div>
     );
