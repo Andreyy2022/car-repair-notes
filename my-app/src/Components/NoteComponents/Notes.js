@@ -1,22 +1,10 @@
 import { useState } from "react";
 import { nanoid } from "nanoid";
-//import { useEffect } from "react";
 
 function Notes() {
     let [note, setNote] = useState('');
     let [notes, setNotes] = useState(localStorage.getItem('notes') ? JSON.parse(localStorage.getItem('notes')) : []);
-/*
-    useEffect(() => {
-        localStorage.setItem('notes', JSON.stringify(notes));
-    }, [notes]);
 
-    useEffect(() => {
-        const data = JSON.parse(localStorage.getItem('notes'));
-        if (data) {
-            setNotes(data);
-        }
-    }, []);
-*/
     function showNote(str) {
         let res = '';
         for (let i = 0; str.length < 70 ? i < str.length : i < 70; i++) {
@@ -31,7 +19,7 @@ function Notes() {
     }
     
     function saveClearNote() {
-        localStorage.set('notes', JSON.stringify([...notes, {id: nanoid(), date: new Date().toLocaleDateString(), text: note, showStr: false}]));
+        localStorage.setItem('notes', JSON.stringify([...notes, {id: nanoid(), date: new Date().toLocaleDateString(), text: note, showStr: false}]));
         setNotes( JSON.parse(localStorage.getItem('notes')) );
         
         setNote('');
