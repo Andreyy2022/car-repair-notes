@@ -36,7 +36,8 @@ function Notes() {
     }
 
     function btnDel(id) {
-        setNotes( notes.filter(noteObj => noteObj.id !== id) );
+        localStorage.setItem( 'notes', JSON.stringify(notes.filter(noteObj => noteObj.id !== id)) );
+        setNotes( JSON.parse(localStorage.getItem('notes')) );
     }
 
     let listNotes = notes.map(
