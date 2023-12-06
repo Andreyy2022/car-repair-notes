@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { nanoid } from "nanoid";
+import './styles.css';
 
 function Notes() {
     let [note, setNote] = useState('');
@@ -19,7 +20,9 @@ function Notes() {
     }
     
     function saveClearNote() {
-        localStorage.setItem('notes', JSON.stringify([...notes, {id: nanoid(), date: new Date().toLocaleDateString(), text: note, showStr: false}]));
+        localStorage.setItem(
+            'notes', JSON.stringify([...notes, {id: nanoid(), date: new Date().toLocaleDateString(), text: note, showStr: false}])
+        );
         setNotes( JSON.parse(localStorage.getItem('notes')) );
         
         setNote('');
@@ -42,8 +45,8 @@ function Notes() {
 
     let listNotes = notes.map(
         noteObj => (
-            <p key={noteObj.id} >
-                <span onClick={() => showHideStr(noteObj.id)}>
+            <p key={noteObj.id}>
+                <span className="showStr" onClick={() => showHideStr(noteObj.id)}>
                     {noteObj.date} - {noteObj.showStr ? noteObj.text : showNote(noteObj.text)}
                 </span>
                 <br/>
@@ -54,7 +57,7 @@ function Notes() {
     );
 
     return (
-        <div>
+        <div className="preBody">
             <textarea cols={60} rows={7} value={note} onChange={(event) => setNote(event.target.value)} />
             <button onClick={saveClearNote}>Сохранить запись</button>
             <div>
