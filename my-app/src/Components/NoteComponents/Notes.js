@@ -50,7 +50,7 @@ function Notes() {
                     {noteObj.date} - {noteObj.showStr ? noteObj.text : showNote(noteObj.text)}
                 </span>
                 <br/>
-                { noteObj.showStr ? <button onClick={() => btnDel(noteObj.id) }>{noteObj.showStr ? 'удалить запись ?' : ''}</button> : '' }
+                { noteObj.showStr ? <button className="btnDel" onClick={() => btnDel(noteObj.id) }>{noteObj.showStr ? 'удалить запись ?' : ''}</button> : '' }
                 <br/>
             </p>
         )
@@ -59,7 +59,7 @@ function Notes() {
     return (
         <div className="preBody">
             <textarea cols={60} rows={7} value={note} onChange={(event) => setNote(event.target.value)} />
-            <button onClick={saveClearNote}>Сохранить запись</button>
+            <button className="saveNote" onClick={saveClearNote}>Сохранить запись</button>
             <div>
                 {listNotes}
             </div>
