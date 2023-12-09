@@ -56,10 +56,19 @@ function Notes() {
         )
     );
 
-    return (
-        <div className="preBody">
+    function inputNote() {
+        let inpAndBut = <>
             <textarea cols={60} rows={7} value={note} onChange={(event) => setNote(event.target.value)} />
             <button className="saveNote" onClick={saveClearNote}>Сохранить запись</button>
+        </>
+        return inpAndBut;
+    }
+
+    return (
+        <div>
+
+
+            <button className="inpNote" onClick={() => inputNote()}>Внести запись</button>
             <div>
                 {listNotes}
             </div>
