@@ -9,6 +9,8 @@ body {
   background: url(./Components/img/car.png);
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
+  margin-left: 2%;
 }
 
 code {
