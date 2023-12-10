@@ -58,16 +58,15 @@ function Notes() {
         )
     );
 
-//    function inputNote() {
-        let inpAndBut = <div>
-            <textarea cols={60} rows={7} value={note} onChange={(event) => setNote(event.target.value)} />
-            <button className="saveNote" onClick={saveClearNote}>Сохранить запись</button>
-        </div>
-//        return inpAndBut;
-//    }
+    let inpAndBut = <div>
+        <textarea cols={60} rows={7} value={note} onChange={(event) => setNote(event.target.value)} />
+        <button className="saveNote" onClick={saveClearNote}>Сохранить запись</button>
+    </div>
 
     function changeDoNote() {
-        setDoNote(true);
+        if (!doNote) {
+            setDoNote(true);
+        }
     }
 
     return (
