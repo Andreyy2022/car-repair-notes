@@ -5,6 +5,7 @@ import './styles.css';
 function Notes() {
     let [note, setNote] = useState('');
     let [notes, setNotes] = useState(localStorage.getItem('notes') ? JSON.parse(localStorage.getItem('notes')) : []);
+    let [doNote, setDoNote] = useState(false);
 
     function showNote(str) {
         let res = '';
@@ -26,6 +27,7 @@ function Notes() {
         setNotes( JSON.parse(localStorage.getItem('notes')) );
         
         setNote('');
+        setDoNote(false);
     }
 
     function showHideStr(id) {
@@ -56,19 +58,21 @@ function Notes() {
         )
     );
 
-    function inputNote() {
-        let inpAndBut = <>
+//    function inputNote() {
+        let inpAndBut = <div>
             <textarea cols={60} rows={7} value={note} onChange={(event) => setNote(event.target.value)} />
             <button className="saveNote" onClick={saveClearNote}>Сохранить запись</button>
-        </>
-        return inpAndBut;
+        </div>
+//        return inpAndBut;
+//    }
+
+    function changeDoNote() {
+        setDoNote(true);
     }
 
     return (
         <div>
-
-
-            <button className="inpNote" onClick={() => inputNote()}>Внести запись</button>
+            <button className="inpNote" onClick={changeDoNote}>{doNote ? inpAndBut : 'Внести запись'}</button>
             <div>
                 {listNotes}
             </div>
