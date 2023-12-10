@@ -21,4 +21,7 @@
 .inpNote {
     margin-top: 2%;
     margin-bottom: 1%;
+    font-style: oblique;
+    font-size: 20px;
+    font-family: CyrillicOld, Verdana, 'Open Sans', sans-serif;
 }

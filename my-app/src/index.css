@@ -11,9 +11,10 @@ body {
   background-size: cover;
   background-attachment: fixed;
   margin-left: 2%;
+  font-size: 1.2em;
+  text-shadow: #003D00 1px 1px 0, #003D00 -1px -1px 0, #003D00 -1px 1px 0, #003D00 1px -1px 0, #003D00 1px 0 0, #003D00 0 1px 0, #003D00 -1px 0 0, #003D00 0 -1px 0, #003D00 2px 2px 2px;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
