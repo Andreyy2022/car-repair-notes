@@ -68,15 +68,16 @@ function Notes() {
             setDoNote(true);
         }
     }
-/*
-    useEffect((event) => {
-        if (doNote) {
+
+    useEffect(() => {
+        function handleEsc(event) {
             if (event.key === 'Escape') {
                 setDoNote(false);
             }
         }
+        window.addEventListener('keydown', handleEsc);
     }, []);
-*/
+
     return (
         <div>
             <button className="inpNote" onClick={changeDoNote}>{doNote ? inpAndBut : 'Внести запись'}</button>
