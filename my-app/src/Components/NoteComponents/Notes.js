@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { nanoid } from "nanoid";
 import './styles.css';
 
@@ -59,7 +59,7 @@ function Notes() {
     );
 
     let inpAndBut = <div>
-        <textarea cols={60} rows={7} value={note} onChange={(event) => setNote(event.target.value)} />
+        <textarea cols={60} rows={7} value={note} onChange={(event) => setNote(event.target.value)} onBlur={() => setDoNote(false)}/>
         <button className="saveNote" onClick={saveClearNote}>Сохранить запись</button>
     </div>
 
@@ -68,7 +68,15 @@ function Notes() {
             setDoNote(true);
         }
     }
-
+/*
+    useEffect((event) => {
+        if (doNote) {
+            if (event.key === 'Escape') {
+                setDoNote(false);
+            }
+        }
+    }, []);
+*/
     return (
         <div>
             <button className="inpNote" onClick={changeDoNote}>{doNote ? inpAndBut : 'Внести запись'}</button>
