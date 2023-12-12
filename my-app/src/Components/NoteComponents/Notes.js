@@ -58,10 +58,10 @@ function Notes() {
         )
     );
 
-    let inpAndBut = <div>
-        <textarea cols={60} rows={7} value={note} onChange={(event) => setNote(event.target.value)} onBlur={() => setDoNote(false)}/>
+    let inpAndButt = <div>
+        <textarea cols={60} rows={7} value={note} onChange={(event) => setNote(event.target.value)} onBlur={() => setTimeout( () => setDoNote(false), 200 )}/>
         <button className="saveNote" onClick={saveClearNote}>Сохранить запись</button>
-    </div>
+    </div>;
 
     function changeDoNote() {
         if (!doNote) {
@@ -80,7 +80,7 @@ function Notes() {
 
     return (
         <div>
-            <button className="inpNote" onClick={changeDoNote}>{doNote ? inpAndBut : 'Внести запись'}</button>
+            <button className="inpNote" onClick={changeDoNote}>{doNote ? inpAndButt : 'Внести запись'}</button>
             <div>
                 {listNotes}
             </div>
