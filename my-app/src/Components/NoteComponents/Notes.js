@@ -1,12 +1,24 @@
+import React from "react";
 import { useEffect, useState } from "react";
 import { nanoid } from "nanoid";
 import './styles.css';
+import Engine from "./Engine";
 
 function Notes() {
     let [note, setNote] = useState('');
     let [notes, setNotes] = useState(localStorage.getItem('notes') ? JSON.parse(localStorage.getItem('notes')) : []);
     let [doNote, setDoNote] = useState(false);
 
+
+    return (
+        <div>
+            <Engine note={note} notes={notes} doNote={doNote}/>
+        </div>
+    );
+}
+
+export default Notes;
+/*    
     function showNote(str) {
         let res = '';
         for (let i = 0; str.length < 70 ? i < str.length : i < 70; i++) {
@@ -89,3 +101,4 @@ function Notes() {
 }
 
 export default Notes;
+*/
