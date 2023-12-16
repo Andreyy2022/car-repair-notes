@@ -3,7 +3,11 @@ import { nanoid } from "nanoid";
 import { useEffect, useState } from "react";
 import './styles.css';
 
-function Engine({note, notes, doNote}) {
+function Engine() {
+
+    let [note, setNote] = useState('');
+    let [notes, setNotes] = useState(localStorage.getItem('notes') ? JSON.parse(localStorage.getItem('notes')) : []);
+    let [doNote, setDoNote] = useState(false);
 
     function showNote(str) {
         let res = '';

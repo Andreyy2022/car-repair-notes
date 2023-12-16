@@ -5,14 +5,20 @@ import './styles.css';
 import Engine from "./Engine";
 
 function Notes() {
-    let [note, setNote] = useState('');
-    let [notes, setNotes] = useState(localStorage.getItem('notes') ? JSON.parse(localStorage.getItem('notes')) : []);
-    let [doNote, setDoNote] = useState(false);
-
+    let [showBlocks, setShowBlockes] = useState(true);
+    let [engine, setEngine] = useState(true);
 
     return (
-        <div>
-            <Engine note={note} notes={notes} doNote={doNote}/>
+        <div className="choice" onClick={() => setShowBlockes(false)}>
+            <> {
+                showBlocks ? <>
+                <div className="box" onClick={() => setEngine(false)}>{engine ? 'Двигатель' : <Engine />}</div>
+                <div className="box">Ходовая система</div>
+                <div className="box">Трансмиссия</div>
+                <div className="box">Кузов/салон</div>
+                </> : ''
+                }
+            </>
         </div>
     );
 }
