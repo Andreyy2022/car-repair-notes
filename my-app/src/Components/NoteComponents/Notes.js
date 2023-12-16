@@ -13,12 +13,12 @@ function Notes() {
     let [transmission, setTransmission] = useState(false);
     let [carcase, setCarcase] = useState(false);
 
-    let blocks = <>
+    let blocks = <div className="choice">
                 <div className="box" onClick={() => setEngine(true)}>Двигатель</div>
                 <div className="box" onClick={() => setChassis(true)}>Ходовая система</div>
                 <div className="box" onClick={() => setTransmission(true)}>Трансмиссия</div>
                 <div className="box" onClick={() => setCarcase(true)}>Кузов/салон</div>
-                </>;
+                </div>;
 
     let ArrModuls = [
         {status: engine, tag: <Engine />},
@@ -38,7 +38,7 @@ function Notes() {
     }
 
     return (
-        <div className="choice">
+        <div>
             {show()}
         </div>
     );
