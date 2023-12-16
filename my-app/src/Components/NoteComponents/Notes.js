@@ -6,29 +6,23 @@ import Engine from "./Engine";
 
 function Notes() {
     let [showBlocks, setShowBlockes] = useState(true);
-    let [engine, setEngine] = useState(true);
-    let [chassis, setChassis] = useState(true);
-    let [transmission, setTransmission] = useState(true);
-    let [carcase, setCarcase] = useState(true);
-/*
-    function handleEngine() {
-        setChassis(false);
-        setTransmission(false);
-        setCarcase(false);
-        return <Engine />;
-    }
-*/
+    let [engine, setEngine] = useState(false);
+    let [chassis, setChassis] = useState(false);
+    let [transmission, setTransmission] = useState(false);
+    let [carcase, setCarcase] = useState(false);
+
+    let blocks = <>
+                <div className="box" onClick={() => setEngine(true)}>Двигатель</div>
+                <div className="box" onClick={() => setChassis(true)}>Ходовая система</div>
+                <div className="box" onClick={() => setTransmission(true)}>Трансмиссия</div>
+                <div className="box" onClick={() => setCarcase(true)}>Кузов/салон</div>
+                </>;
+
     return (
         <div className="choice" /*onClick={() => setShowBlockes(false)}*/>
-            <> {
-                showBlocks ? <>
-                <div className="box" onClick={handleEngine}>{engine ? 'Двигатель' : ''}</div>
-                <div className="box">{chassis ? 'Ходовая система' : ''}</div>
-                <div className="box">Трансмиссия</div>
-                <div className="box">Кузов/салон</div>
-                </> : ''
-                }
-            </>
+            {
+                engine ? <Engine /> : blocks || chassis ? <Chassis /> : blocks || transmission ? <Transmission /> : blocks || transmission ? <Carcase /> : blocks
+            }
         </div>
     );
 }
