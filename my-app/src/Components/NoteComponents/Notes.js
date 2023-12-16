@@ -7,13 +7,23 @@ import Engine from "./Engine";
 function Notes() {
     let [showBlocks, setShowBlockes] = useState(true);
     let [engine, setEngine] = useState(true);
-
+    let [chassis, setChassis] = useState(true);
+    let [transmission, setTransmission] = useState(true);
+    let [carcase, setCarcase] = useState(true);
+/*
+    function handleEngine() {
+        setChassis(false);
+        setTransmission(false);
+        setCarcase(false);
+        return <Engine />;
+    }
+*/
     return (
-        <div className="choice" onClick={() => setShowBlockes(false)}>
+        <div className="choice" /*onClick={() => setShowBlockes(false)}*/>
             <> {
                 showBlocks ? <>
-                <div className="box" onClick={() => setEngine(false)}>{engine ? 'Двигатель' : <Engine />}</div>
-                <div className="box">Ходовая система</div>
+                <div className="box" onClick={handleEngine}>{engine ? 'Двигатель' : ''}</div>
+                <div className="box">{chassis ? 'Ходовая система' : ''}</div>
                 <div className="box">Трансмиссия</div>
                 <div className="box">Кузов/салон</div>
                 </> : ''
