@@ -20,12 +20,26 @@ function Notes() {
                 <div className="box" onClick={() => setCarcase(true)}>Кузов/салон</div>
                 </>;
 
+    let ArrModuls = [
+        {status: engine, tag: <Engine />},
+        {status: chassis, tag: <Chassis />},
+        {status: transmission, tag: <Transmission />},
+        {status: carcase, tag: <Carcase />},
+    ];
+
+    function show() {
+        for (let elem of ArrModuls) {
+            if (elem.status) {
+                return elem.tag;
+            }
+        }
+
+        return blocks;
+    }
+
     return (
         <div className="choice">
-            {
-                engine ? <Engine /> : blocks || chassis ? <Chassis /> : blocks || transmission ? <Transmission /> : blocks || carcase ? <Carcase /> : blocks
-            }
-            <span>{console.log('(.)(.)')}</span>
+            {show()}
         </div>
     );
 }
