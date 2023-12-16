@@ -6,7 +6,7 @@ import './styles.css';
 function Engine() {
 
     let [note, setNote] = useState('');
-    let [notes, setNotes] = useState(localStorage.getItem('notes') ? JSON.parse(localStorage.getItem('notes')) : []);
+    let [notes, setNotes] = useState(localStorage.getItem('notesEng') ? JSON.parse(localStorage.getItem('notesEng')) : []);
     let [doNote, setDoNote] = useState(false);
 
     function showNote(str) {
@@ -24,9 +24,9 @@ function Engine() {
 
     function saveClearNote() {
         localStorage.setItem(
-            'notes', JSON.stringify([...notes, {id: nanoid(), date: new Date().toLocaleDateString(), text: note, showStr: false}])
+            'notesEng', JSON.stringify([...notes, {id: nanoid(), date: new Date().toLocaleDateString(), text: note, showStr: false}])
         );
-        setNotes( JSON.parse(localStorage.getItem('notes')) );
+        setNotes( JSON.parse(localStorage.getItem('notesEng')) );
         
         setNote('');
         setDoNote(false);
@@ -43,8 +43,8 @@ function Engine() {
     }
 
     function btnDel(id) {
-        localStorage.setItem( 'notes', JSON.stringify(notes.filter(noteObj => noteObj.id !== id)) );
-        setNotes( JSON.parse(localStorage.getItem('notes')) );
+        localStorage.setItem( 'notesEng', JSON.stringify(notes.filter(noteObj => noteObj.id !== id)) );
+        setNotes( JSON.parse(localStorage.getItem('notesEng')) );
     }
 
     let listNotes = notes.map(

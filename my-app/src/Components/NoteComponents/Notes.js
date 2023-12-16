@@ -3,6 +3,9 @@ import { useEffect, useState } from "react";
 import { nanoid } from "nanoid";
 import './styles.css';
 import Engine from "./Engine";
+import Chassis from "./Chassis";
+import Transmission from "./Transmission";
+import Carcase from "./Carcase";
 
 function Notes() {
     let [engine, setEngine] = useState(false);
@@ -22,6 +25,7 @@ function Notes() {
             {
                 engine ? <Engine /> : blocks || chassis ? <Chassis /> : blocks || transmission ? <Transmission /> : blocks || carcase ? <Carcase /> : blocks
             }
+            <span>{console.log('(.)(.)')}</span>
         </div>
     );
 }
