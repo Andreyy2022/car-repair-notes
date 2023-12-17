@@ -8,11 +8,14 @@
 
 .box {
     font-style: oblique;
-    color: black;
-    font-size: 21px;
+    color: grey;
+    font-size: 25px;
+    font-weight: bold;
+    box-shadow: 3px 3px 3px black;
     border-radius: 5px;
     border: 2px solid black;
     background: blanchedalmond;
+    padding: 10px;
 }
 
 .showStr {
