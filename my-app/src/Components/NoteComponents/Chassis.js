@@ -3,7 +3,7 @@ import { nanoid } from "nanoid";
 import { useEffect, useState } from "react";
 import './styles.css';
 
-function Chassis() {
+function Chassis({handleHideCompChass}) {
 
     let [note, setNote] = useState('');
     let [notes, setNotes] = useState(localStorage.getItem('notesChas') ? JSON.parse(localStorage.getItem('notesChas')) : []);
@@ -83,6 +83,7 @@ function Chassis() {
     return (
         <div>
             <button className="inpNote" onClick={changeDoNote}>{doNote ? inpAndButt : 'Внести запись'}</button>
+            <button onClick={handleHideCompChass}>Вернуться в главное меню</button>
             <div>
                 {listNotes}
             </div>

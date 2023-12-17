@@ -3,7 +3,7 @@ import { nanoid } from "nanoid";
 import { useEffect, useState } from "react";
 import './styles.css';
 
-function Engine() {
+function Engine({handleHideCompEng}) {
 
     let [note, setNote] = useState('');
     let [notes, setNotes] = useState(localStorage.getItem('notesEng') ? JSON.parse(localStorage.getItem('notesEng')) : []);
@@ -83,6 +83,7 @@ function Engine() {
     return (
         <div>
             <button className="inpNote" onClick={changeDoNote}>{doNote ? inpAndButt : 'Внести запись'}</button>
+            <button onClick={handleHideCompEng}>Вернуться в главное меню</button>
             <div>
                 {listNotes}
             </div>

@@ -3,7 +3,7 @@ import { nanoid } from "nanoid";
 import { useEffect, useState } from "react";
 import './styles.css';
 
-function Carcase() {
+function Carcase({handleHideCompCarc}) {
 
     let [note, setNote] = useState('');
     let [notes, setNotes] = useState(localStorage.getItem('notesCarc') ? JSON.parse(localStorage.getItem('notesCarc')) : []);
@@ -83,6 +83,7 @@ function Carcase() {
     return (
         <div>
             <button className="inpNote" onClick={changeDoNote}>{doNote ? inpAndButt : 'Внести запись'}</button>
+            <button onClick={handleHideCompCarc}>Вернуться в главное меню</button>
             <div>
                 {listNotes}
             </div>

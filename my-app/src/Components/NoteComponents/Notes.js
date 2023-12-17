@@ -21,10 +21,10 @@ function Notes() {
                 </div>;
 
     let ArrModuls = [
-        {status: engine, tag: <Engine />},
-        {status: chassis, tag: <Chassis />},
-        {status: transmission, tag: <Transmission />},
-        {status: carcase, tag: <Carcase />},
+        {status: engine, tag: <Engine handleHideCompEng={handleHideCompEng} />},
+        {status: chassis, tag: <Chassis handleHideCompChass={handleHideCompChass} />},
+        {status: transmission, tag: <Transmission handleHideCompTrans={handleHideCompTrans} />},
+        {status: carcase, tag: <Carcase handleHideCompCarc={handleHideCompCarc} />},
     ];
 
     function show() {
@@ -35,6 +35,22 @@ function Notes() {
         }
 
         return blocks;
+    }
+
+    function handleHideCompEng() {
+        setEngine(false);
+    }
+
+    function handleHideCompChass() {
+        setChassis(false);
+    }
+
+    function handleHideCompTrans() {
+        setTransmission(false);
+    }
+
+    function handleHideCompCarc() {
+        setCarcase(false);
     }
 
     return (

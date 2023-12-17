@@ -3,7 +3,7 @@ import { nanoid } from "nanoid";
 import { useEffect, useState } from "react";
 import './styles.css';
 
-function Transmission() {
+function Transmission({handleHideCompTrans}) {
 
     let [note, setNote] = useState('');
     let [notes, setNotes] = useState(localStorage.getItem('notesTran') ? JSON.parse(localStorage.getItem('notesTran')) : []);
@@ -83,6 +83,7 @@ function Transmission() {
     return (
         <div>
             <button className="inpNote" onClick={changeDoNote}>{doNote ? inpAndButt : 'Внести запись'}</button>
+            <button onClick={handleHideCompTrans}>Вернуться в главное меню</button>
             <div>
                 {listNotes}
             </div>
