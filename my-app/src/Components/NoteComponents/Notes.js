@@ -14,10 +14,10 @@ function Notes() {
     let [carcase, setCarcase] = useState(false);
 
     let blocks = <div className="choice">
-                <div className="box" onClick={() => setEngine(true)}>Двигатель</div>
-                <div className="box" onClick={() => setChassis(true)}>Ходовая система</div>
-                <div className="box" onClick={() => setTransmission(true)}>Трансмиссия</div>
-                <div className="box" onClick={() => setCarcase(true)}>Кузов/салон</div>
+                    <div className="box" onClick={() => setEngine(true)}>Двигатель</div>
+                    <div className="box" onClick={() => setChassis(true)}>Ходовая система</div>
+                    <div className="box" onClick={() => setTransmission(true)}>Трансмиссия</div>
+                    <div className="box" onClick={() => setCarcase(true)}>Кузов/салон</div>
                 </div>;
 
     let ArrModuls = [
