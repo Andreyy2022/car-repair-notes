@@ -82,8 +82,10 @@ function Engine({handleHideCompEng}) {
 
     return (
         <div>
-            <button className="inpNote" onClick={changeDoNote}>{doNote ? inpAndButt : 'Внести запись'}</button>
-            <button onClick={handleHideCompEng}>Вернуться в главное меню</button>
+            <div className="InputBack">
+                <button className="inpNote" onClick={changeDoNote}>{doNote ? inpAndButt : 'Внести запись'}</button>
+                <button className="backButt" onClick={handleHideCompEng}>Вернуться в главное меню</button>
+            </div>
             <div>
                 {listNotes}
             </div>

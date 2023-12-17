@@ -29,11 +29,20 @@
     background:  blanchedalmond;
 }
 
-.inpNote {
+.inpNote, .backButt {
     margin-top: 2%;
     margin-bottom: 1%;
     font-style: oblique;
     font-size: 21px;
     border-radius: 5px;
     background:  blanchedalmond;
+}
+
+.InputBack {
+    margin-top: 15px;
+    margin-right: 25px;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-items: center;
+    justify-content: space-between;
 }

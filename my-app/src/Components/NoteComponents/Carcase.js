@@ -82,8 +82,10 @@ function Carcase({handleHideCompCarc}) {
 
     return (
         <div>
-            <button className="inpNote" onClick={changeDoNote}>{doNote ? inpAndButt : 'Внести запись'}</button>
-            <button onClick={handleHideCompCarc}>Вернуться в главное меню</button>
+            <div className="InputBack">
+                <button className="inpNote" onClick={changeDoNote}>{doNote ? inpAndButt : 'Внести запись'}</button>
+                <button className="backButt" onClick={handleHideCompCarc}>Вернуться в главное меню</button>
+            </div>
             <div>
                 {listNotes}
             </div>

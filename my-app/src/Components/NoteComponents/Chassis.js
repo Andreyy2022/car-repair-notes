@@ -82,8 +82,10 @@ function Chassis({handleHideCompChass}) {
 
     return (
         <div>
-            <button className="inpNote" onClick={changeDoNote}>{doNote ? inpAndButt : 'Внести запись'}</button>
-            <button onClick={handleHideCompChass}>Вернуться в главное меню</button>
+            <div className="InputBack">
+                <button className="inpNote" onClick={changeDoNote}>{doNote ? inpAndButt : 'Внести запись'}</button>
+                <button className="backButt" onClick={handleHideCompChass}>Вернуться в главное меню</button>
+            </div>
             <div>
                 {listNotes}
             </div>
