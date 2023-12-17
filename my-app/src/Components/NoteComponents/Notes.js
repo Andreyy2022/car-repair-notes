@@ -55,6 +55,7 @@ function Notes() {
 
     return (
         <div>
+            <div className="description">Журнал учета ремонта и технического обслуживания автомобиля.</div>
             {show()}
         </div>
     );
